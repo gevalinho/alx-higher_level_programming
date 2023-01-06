@@ -1,123 +1,61 @@
-#include <stdio.h>
-
-#include <stdlib.h>
-
 #include "lists.h"
 
 
 
 /**
 
- * print_listint - prints all elements of a listint_t list
+ * check_cycle - check for loop in LL
 
- * @h: pointer to head of list
+ * @list: head of linked list
 
- * Return: number of nodes
+ *
 
- */
+ * Description - check for loops in LL
 
-size_t print_listint(const listint_t *h)
-
-{
-
-	const listint_t *current;
-
-	unsigned int n;
-
-
-
-	current = h;
-
-	n = 0;
-
-	while (current != NULL)
-
-	{
-
-		printf("%i\n", current->n);
-
-		current = current->next;
-
-		n++;
-
-	}
-
-	return (n);
-
-}
-
-
-
-/**
-
- * add_nodeint - adds a new node at the beginning of a listint_t list
-
- * @head: pointer to a pointer of the start of the list
-
- * @n: integer to be included in node
-
- * Return: address of the new element or NULL if it fails
+ * Return: 1 if cycled, 0 if not
 
  */
 
-listint_t *add_nodeint(listint_t **head, const int n)
+
+
+int check_cycle(listint_t *list)
 
 {
 
-	listint_t *new;
+	listint_t *slow, *fast;
 
 
 
-	new = malloc(sizeof(listint_t));
-
-	if (new == NULL)
+	if (!list)
 
 	{
 
-		return (NULL);
+		return (0);
 
 	}
 
-	new->n = n;
+	slow = list;
 
-	new->next = *head;
+	fast = list->next;
 
-	*head = new;
-
-	return (new);
-
-}
-
-
-
-/**
-
- * free_listint - frees a listint_t list
-
- * @head: pointer to list to be freed
-
- * Return: void
-
- */
-
-void free_listint(listint_t *head)
-
-{
-
-	listint_t *current;
-
-
-
-	while (head != NULL)
+	while (fast && slow && fast->next)
 
 	{
 
-		current = head;
+		if (slow == fast)
 
-		head = head->next;
+		{
 
-		free(current);
+			return (1);
+
+		}
+
+		slow = slow->next;
+
+		fast = fast->next->next;
 
 	}
+
+	return (0);
 
 }
