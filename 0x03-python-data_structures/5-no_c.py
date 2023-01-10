@@ -2,11 +2,6 @@
 
 def no_c(my_string):
 
-    updated_str = ''
+        new_string = my_string.translate({ord(i): None for i in 'cC'})
 
-    for i in my_string:
-
-        if i != 'c' and i != 'C':
-
-              updated_str += i
-      return (updated_str)
+        return new_string
