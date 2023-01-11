@@ -2,86 +2,24 @@
 
 
 
-def add(a, b):
+if __name__ == "__main__":
 
-    """My addition function
+    """Print the sum, difference, multiple and quotient of 10 and 5."""
 
-    Args:
-
-        a: first integer
-
-        b: second integer
-
-    Returns:
-
-        The return value. a + b
-
-    """
-
-    return (a + b)
+    from calculator_1 import add, sub, mul, div
 
 
 
+    a = 10
 
-
-def sub(a, b):
-
-    """My subtraction function
-
-    Args:
-
-        a: first integer
-
-        b: second integer
-
-    Returns:
-
-        The return value. a - b
-
-    """
-
-    return (a - b)
+    b = 5
 
 
 
+    print("{} + {} = {}".format(a, b, add(a, b)))
 
+    print("{} - {} = {}".format(a, b, sub(a, b)))
 
-def mul(a, b):
+    print("{} * {} = {}".format(a, b, mul(a, b)))
 
-    """My multiplication function
-
-    Args:
-
-        a: first integer
-
-        b: second integer
-
-    Returns:
-
-        The return value. a * b
-
-    """
-
-    return (a * b)
-
-
-
-
-
-def div(a, b):
-
-    """My division function
-
-    Args:
-
-        a: first integer
-
-        b: second integer
-
-    Returns:
-
-        The return value. a / b
-
-    """
-
-    return int(a / b)
+    print("{} / {} = {}".format(a, b, div(a, b)))
